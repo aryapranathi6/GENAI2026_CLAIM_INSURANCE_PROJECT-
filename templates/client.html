@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Company Trust Check</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+<h2>Insurance Company Trust Check</h2>
+
+<form action="/predict_client" method="POST">
+<input type="number" name="is_irdai_registered" placeholder="IRDAI Registered (1/0)" required>
+<input type="number" name="claim_settlement_ratio" placeholder="Claim Settlement Ratio" required>
+<input type="number" name="solvency_ratio" placeholder="Solvency Ratio" required>
+<input type="number" name="avg_claim_payout_days" placeholder="Avg Claim Payout Days" required>
+<input type="number" name="complaint_resolution_rate" placeholder="Complaint Resolution Rate" required>
+<input type="number" name="customer_retention_rate" placeholder="Customer Retention Rate" required>
+<input type="number" name="total_assets_cr" placeholder="Total Assets (Cr)" required>
+<input type="number" name="legal_dispute_count" placeholder="Legal Dispute Count" required>
+<input type="number" name="premium_to_payout_ratio" placeholder="Premium to Payout Ratio" required>
+<input type="number" name="digital_success_rate" placeholder="Digital Success Rate" required>
+<input type="number" name="grievance_disposal_days" placeholder="Grievance Disposal Days" required>
+<input type="number" name="transparency_score" placeholder="Transparency Score" required>
+<input type="number" name="hidden_charges_flag" placeholder="Hidden Charges Flag (1/0)" required>
+<input type="number" name="physical_branch_rating" placeholder="Physical Branch Rating" required>
+<input type="number" name="online_tracking_available" placeholder="Online Tracking Available (1/0)" required>
+<input type="number" name="agent_rating" placeholder="Agent Rating" required>
+
+<button type="submit">Predict Trust</button>
+</form>
+</div>
+
+
+
+</body>
+</html>

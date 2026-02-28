@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Client Fraud Check</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Client Fraud Detection</h2>
+<p>Enter Claim & Behavioral Details</p>
+
+<form action="/predict_company" method="POST">
+
+<input type="number" name="credit_score" placeholder="Credit Score (300-850)" required>
+
+<input type="number" name="claim_amount" placeholder="Claim Amount" required>
+
+<input type="number" name="previous_claims" placeholder="Previous Claims Count" required>
+
+<input type="number" name="geo_distance" placeholder="Geo Distance from Registered Address" required>
+
+<button type="submit">Predict Fraud Risk</button>
+
+</form>
+
+</div>
+
+
+</body>
+</html>

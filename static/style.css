@@ -1,0 +1,255 @@
+/* =====================
+   GLOBAL BODY
+===================== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #0f4c75, #3282b8);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =====================
+   MAIN CARD CONTAINER
+===================== */
+.container {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    width: 45%;
+    border-radius: 20px;
+    box-shadow: 0px 4px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* =====================
+   LOGO
+===================== */
+.logo {
+    width: 160px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ffd369;
+    color: #0f4c75;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #f4c430;
+}
+
+/* =====================
+   INPUTS
+===================== */
+input {
+    padding: 12px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+    width: 85%;
+    font-size: 15px;
+}
+
+/* =====================
+   SELECT DROPDOWN
+===================== */
+select {
+    padding: 12px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+    width: 85%;
+    font-size: 15px;
+}
+
+/* =====================
+   TITLES
+===================== */
+h1, h2, h3 {
+    color: #ffffff;
+}
+
+/* =====================
+   PARAGRAPH
+===================== */
+p {
+    color: #e0e0e0;
+}
+
+/* =====================
+   RESULT VALUE
+===================== */
+.result-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffd369;
+    margin-top: 15px;
+}
+/* CHATBOT PANEL */
+.chatbot-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.chatbot-bar iframe {
+    width: 80%;
+    height: 200px;
+    border: none;
+    border-radius: 20px;
+}
+
+/* EMOJI BUTTON */
+.chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ffd369;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+.chat-toggle {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: #ffd369;
+color: #0f4c75;
+border: none;
+border-radius: 50%;
+width: 60px;
+height: 60px;
+font-size: 22px;
+cursor: pointer;
+box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+z-index: 1000;
+}
+/* RISK BADGE */
+.risk-badge{
+padding:10px 20px;
+border-radius:20px;
+color:white;
+font-weight:bold;
+margin-bottom:20px;
+}
+.low{background:#2ecc71;}
+.medium{background:#f39c12;}
+.high{background:#e74c3c;}
+
+/* METER */
+.meter{
+width:100%;
+height:20px;
+background:#eee;
+border-radius:20px;
+margin:20px 0;
+overflow:hidden;
+}
+.meter-fill{
+height:100%;
+background:linear-gradient(90deg,#2ecc71,#f39c12,#e74c3c);
+width:0%;
+transition:width 1s ease;
+}
+
+/* RESULT VALUE */
+.result-value{
+font-size:42px;
+font-weight:bold;
+}
+/* SPEEDOMETER */
+.speedometer{
+width:200px;
+height:100px;
+background:conic-gradient(#2ecc71,#f39c12,#e74c3c);
+border-radius:200px 200px 0 0;
+position:relative;
+margin:20px auto;
+}
+.needle{
+width:4px;
+height:90px;
+background:black;
+position:absolute;
+bottom:0;
+left:50%;
+transform-origin:bottom;
+transition:transform 1s ease;
+}
+
+/* POPUP */
+.popup{
+display:none;
+position:fixed;
+top:20%;
+left:50%;
+transform:translateX(-50%);
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0px 5px 20px rgba(0,0,0,0.3);
+z-index:2000;
+}
+
+/* REASON LIST */
+ul{
+text-align:left;
+}
+.dashboard{
+display:flex;
+gap:20px;
+padding:40px;
+}
+
+.left-panel,.center-panel,.right-panel{
+background:white;
+padding:20px;
+border-radius:20px;
+width:33%;
+}
+
+.result-value{
+font-size:40px;
+font-weight:bold;
+}
+
+.popup{
+display:none;
+position:fixed;
+top:20%;
+left:50%;
+transform:translateX(-50%);
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0px 5px 20px rgba(0,0,0,0.3);
+}

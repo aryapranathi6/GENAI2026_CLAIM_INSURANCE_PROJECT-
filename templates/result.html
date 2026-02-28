@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prediction Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- LEFT PANEL -->
+<div class="left-panel">
+
+<h2>Fraud Risk Summary</h2>
+
+<div id="riskBadge" class="risk-badge"></div>
+
+<h1 class="result-value">{{output}}%</h1>
+
+<h3 id="confidenceText"></h3>
+
+<ul id="reasonList"></ul>
+
+<button onclick="openPopup()">Investigator Dashboard</button>
+
+</div>
+
+<!-- CENTER PANEL -->
+<div class="center-panel">
+
+<h3>Fraud Trend</h3>
+<canvas id="areaChart"></canvas>
+
+</div>
+
+<!-- RIGHT PANEL -->
+<div class="right-panel">
+
+<h3>Risk Gauge</h3>
+
+<canvas id="fraudChart" width="200" height="200"></canvas>
+
+<div class="speedometer">
+<div class="needle" id="needle"></div>
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<h2>Investigation Summary</h2>
+<p id="popupText"></p>
+<button onclick="closePopup()">Close</button>
+</div>
+
+<!-- CHATBOT -->
+<div class="chatbot-bar" id="chatbar">
+<iframe src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/02/27/07/20260227072711-WIJSEI8B.json"></iframe>
+</div>
+
+<button class="chat-toggle" onclick="toggleChat()">💬</button>
+
+<script>
+let score={{output}};
+
+// ===== DONUT =====
+new Chart(document.getElementById("fraudChart"),{
+type:"doughnut",
+data:{labels:["Risk","Safe"],datasets:[{data:[score,100-score]}]},
+options:{cutout:"70%"}
+});
+
+// ===== AREA TREND =====
+new Chart(document.getElementById("areaChart"),{
+type:"line",
+data:{
+labels:["T1","T2","T3","T4","T5","T6"],
+datasets:[{
+data:[20,40,30,60,50,score],
+fill:true
+}]
+}
+});
+
+// ===== BADGE + EXPLANATION =====
+let badge=document.getElementById("riskBadge");
+let confidence=document.getElementById("confidenceText");
+let reasons=document.getElementById("reasonList");
+let popupText=document.getElementById("popupText");
+
+if(score<40){
+badge.innerHTML="LOW RISK";
+badge.className="risk-badge low";
+confidence.innerHTML="Model Confidence: Legitimate Behaviour";
+reasons.innerHTML="<li>Stable claim pattern</li><li>Low anomaly signals</li>";
+popupText.innerHTML="No major investigation required.";
+}
+else if(score<70){
+badge.innerHTML="MEDIUM RISK";
+badge.className="risk-badge medium";
+confidence.innerHTML="Model Confidence: Suspicious Behaviour";
+reasons.innerHTML="<li>Irregular claim frequency</li><li>Minor document mismatch</li>";
+popupText.innerHTML="Recommend soft investigation.";
+}
+else{
+badge.innerHTML="HIGH RISK";
+badge.className="risk-badge high";
+confidence.innerHTML="Model Confidence: Fraud Pattern Detected";
+reasons.innerHTML="<li>High claim anomaly</li><li>Device/IP risk indicators</li>";
+popupText.innerHTML="Immediate fraud investigation required.";
+}
+
+// ===== SPEEDOMETER =====
+document.getElementById("needle").style.transform="rotate("+score*1.8+"deg)";
+
+// ===== AUTO CHAT =====
+setTimeout(()=>{document.getElementById("chatbar").style.display="flex";},1200);
+
+// ===== POPUP =====
+function openPopup(){document.getElementById("popup").style.display="block";}
+function closePopup(){document.getElementById("popup").style.display="none";}
+
+// ===== CHAT TOGGLE =====
+function toggleChat(){
+let chat=document.getElementById("chatbar");
+chat.style.display=chat.style.display==="none"?"flex":"none";
+}
+</script>
+
+</body>
+</html>
